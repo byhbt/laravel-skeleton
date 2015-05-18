@@ -1,61 +1,53 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Madcoda\Youtube;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 use App\Video;
 
-class VideoController extends Controller
-{
+class VideoController extends Controller {
 
     /**
      * Show the application dashboard to the user.
      *
      * @return Response
      */
-    public function index()
-    {
+    public function index() {
         $youtubeKey = array("key" => "AIzaSyAmsWXPu2gP78el5mSftCeLLRCdvWfOHWU");
-        $youtube = new Youtube($youtubeKey);
-        
-        $validId = "RFgGh1rvwBE";
+        $youtube    = new Youtube($youtubeKey);
+
+        $validId   = "RFgGh1rvwBE";
         $inValidId = "RFgGh1rvwBE123123";
-        
+
         $videoInfo = $youtube->getVideoInfo($validId);
-        
+
         dd($videoInfo->snippet->title);
         return view('home');
     }
-    
-    public function show()
-    {
+
+    public function show() {
         return view('video.importForm');
     }
-    
-    public function store()
-    {
-        $videoId = Input::get('videoId');
+
+    /**
+     * 
+     * @return type
+     */
+    public function store() {
+        $videoId = Input::get('youtube_id');
         
-        $youtubeKey = array("key" => "AIzaSyAmsWXPu2gP78el5mSftCeLLRCdvWfOHWU");
-        $youtube = new Youtube($youtubeKey);
+        // Create new video
+//        $video = new Video;
+//        $video->youtube_id = $videoId;
+//        $video->title = 'tet';
+//        $video->description = 'test';
+//        $video->save();
+       
+        $user = Video::create(['youtube_id' => '12312312']);
         
-        $validId = "RFgGh1rvwBE";
-        
-        $videoInfo = $youtube->getVideoInfo($validId);
-        
-        if (!$videoInfo) {
-            // log video id
-            // throw exeception
-        }
-        
-        $videoItem = [
-            'youtube_id' => $videoInfo->id,
-            'title' => $videoInfo->snippet->title,
-            'description' => $videoInfo->snippet->description
-        ];
-        
-        // insert into database
-        Video::create($videoItem);
+        return Redirect::route('video.list');
     }
 
 }
