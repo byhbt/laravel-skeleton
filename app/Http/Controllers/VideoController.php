@@ -2,52 +2,62 @@
 
 namespace App\Http\Controllers;
 
-use Madcoda\Youtube;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
-use App\Video;
+use Madcoda\Youtube;
 
-class VideoController extends Controller {
+class VideoController extends Controller
+{
 
     /**
      * Show the application dashboard to the user.
      *
      * @return Response
      */
-    public function index() {
-        $youtubeKey = array("key" => "AIzaSyAmsWXPu2gP78el5mSftCeLLRCdvWfOHWU");
-        $youtube    = new Youtube($youtubeKey);
-
-        $validId   = "RFgGh1rvwBE";
-        $inValidId = "RFgGh1rvwBE123123";
-
-        $videoInfo = $youtube->getVideoInfo($validId);
-
-        dd($videoInfo->snippet->title);
+    public function index()
+    {
         return view('home');
     }
 
-    public function show() {
-        return view('video.importForm');
+    public function show()
+    {
+        $data = [
+            'video' => [],
+        ];
+
+        return view('video.importForm', $data);
     }
 
     /**
-     * 
+     *
      * @return type
      */
-    public function store() {
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'youtube_id' => 'required|unique:videos|max:20',
+        ]);
+
         $videoId = Input::get('youtube_id');
-        
-        // Create new video
-//        $video = new Video;
-//        $video->youtube_id = $videoId;
-//        $video->title = 'tet';
-//        $video->description = 'test';
-//        $video->save();
-       
-        $user = Video::create(['youtube_id' => '12312312']);
-        
-        return Redirect::route('video.list');
+
+        // Process Video
+        // Connect to youtube
+        $youtubeKey = array("key" => "AIzaSyAmsWXPu2gP78el5mSftCeLLRCdvWfOHWU");
+        $youtube = new Youtube($youtubeKey);
+
+        // Get video Info
+        $videoInfo = $youtube->getVideoInfo($videoId);
+
+        // dd($videoInfo->snippet);
+
+        $user = Video::create(['youtube_id' => $videoId]);
+
+        $data = [
+            'video' => $videoInfo->snippet,
+        ];
+
+        return Redirect::route('video.list', $data);
     }
 
 }
