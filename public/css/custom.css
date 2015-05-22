@@ -8,3 +8,8 @@ p {
 .logo {
     color:#CCC;
 }
+
+
+.portfolio-item {
+    margin-bottom: 25px;
+}

@@ -4,6 +4,9 @@ Route::get('/', 'HomeController@index');
 
 Route::get('home', 'HomeController@index');
 Route::get('video', 'VideoController@index');
+Route::get('video', 'VideoController@index');
+
+Route::get('video/:id', ['as' => 'video.detail', 'uses' => 'VideoController@detail']);
 
 Route::get('import', ['as' => 'video.list', 'uses' => 'VideoController@show']);
 Route::post('import', ['as' => 'video.submit', 'uses' => 'VideoController@store']);

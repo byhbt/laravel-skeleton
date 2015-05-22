@@ -59,5 +59,15 @@ class VideoController extends Controller
 
         return Redirect::route('video.list', $data);
     }
+    
+    /**
+     * Display detail of video
+     * 
+     * @return type
+     */
+    public function detail()
+    {
+        return view('video.detail');
+    }
 
 }
