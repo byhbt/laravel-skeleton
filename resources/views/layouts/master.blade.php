@@ -6,7 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel</title>
 
-        <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/custom.css') }}" rel="stylesheet">
 
         <!-- Fonts -->
         <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -58,7 +59,7 @@
             <footer>
                 <div class="row">
                     <div class="col-lg-12">
-                        <p>Copyright &copy; Your Website 2014</p>
+                        <p>Copyright &copy; Your Website {!! date('Y') !!   }</p>
                     </div>
                 </div>
                 <!-- /.row -->

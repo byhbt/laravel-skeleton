@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Socialize;
+use Redirect;
 
 class AuthController extends Controller
 {
@@ -35,6 +37,20 @@ use AuthenticatesAndRegistersUsers;
         $this->registrar = $registrar;
 
         $this->middleware('guest', ['except' => 'getLogout']);
+    }
+
+    // To redirect github
+    public function facebookRedirect()
+    {
+        return Socialize::with('facebook')->redirect();
+    }
+
+    // to get authenticate user data
+    public function facebook()
+    {
+        $user = Socialize::with('facebook')->user();
+        // Do your stuff with user data.
+        dd($user);
     }
 
 }
