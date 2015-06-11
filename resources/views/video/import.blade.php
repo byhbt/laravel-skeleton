@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.master')
 
 @section('content')
 <div class="container">
@@ -50,11 +50,9 @@
     <div class="row col-sm-12">
         <p>Recent added items</p>
         <ul>
-            <li>Hello</li>
-            <li>Hello</li>
-            <li>Hello</li>
-            <li>Hello</li>
-            <li>Hello</li>
+            @foreach($videos as $video)
+                <li>{{ $video->youtube_id }}</li>
+            @endforeach
         </ul>
     </div>
 </div>

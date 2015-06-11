@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -22,11 +23,9 @@ class VideoController extends Controller
 
     public function show()
     {
-        $data = [
-            'video' => [],
-        ];
+        $videos = Video::all();
 
-        return view('video.importForm', $data);
+        return view('video.import', ['videos' => $videos]);
     }
 
     /**

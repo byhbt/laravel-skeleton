@@ -2,9 +2,7 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('home', 'HomeController@index');
-Route::get('video', 'VideoController@index');
-Route::get('video', 'VideoController@index');
+Route::get('video', 'VideoController@show');
 
 Route::get('video/:id', ['as' => 'video.detail', 'uses' => 'VideoController@detail']);
 

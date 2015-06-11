@@ -10,6 +10,8 @@ class UserTableSeeder extends DatabaseSeeder
      */
     public function run()
     {
+        DB::table('users')->truncate();
+
         $users = [
             'email'       => 'admin@admin.com',
             'name'  => 'Admin',
