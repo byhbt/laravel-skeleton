@@ -20,3 +20,16 @@ Route::get('account/facebook', 'Auth\AuthController@facebook');
 Route::get('backend', function () {
     return '';
 });
+
+
+//Route::group(array('prefix' => 'admin', 'before' => 'auth', 'namespace' => 'Backend'), function()
+Route::group(array('prefix' => 'admin', 'namespace' => 'Backend'), function()
+{
+    Route::get('/', ['as' => 'dashboard.home', 'uses' => 'DashboardController@show']);
+
+    Route::get('user/profile', function()
+    {
+        // Has Auth Filter
+    });
+});
+

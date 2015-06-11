@@ -29,7 +29,11 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-                'Illuminate\Contracts\Auth\Registrar', 'App\Services\Registrar'
+            'Illuminate\Contracts\Auth\Registrar', 'App\Services\Registrar'
+        );
+
+        $this->app->bind(
+            'App\Repositories\VideoInterface', 'App\Repositories\VideoRepository'
         );
     }
 

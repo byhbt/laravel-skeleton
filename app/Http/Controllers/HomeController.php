@@ -2,26 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use Madcoda\Youtube;
+use App\Repositories\VideoInterface;
+use App\Video;
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
-    public function __construct() {
-        $this->middleware('guest');
+    public function __construct()
+    {
+//        $this->middleware('guest');
     }
 
     /**
      * Show the application dashboard to the user.
      *
+     * @param VideoInterface $video
      * @return Response
      */
-    public function index() {
-        return view('home.home');
+    public function index(VideoInterface $video)
+    {
+        $videos = $video->all()->take(8);
+
+        $data = [
+            'videos' => $videos
+
+        ];
+
+        return view('home.home', $data);
     }
 
 }

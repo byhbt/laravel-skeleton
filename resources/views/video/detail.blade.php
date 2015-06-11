@@ -15,7 +15,9 @@
 <div class="row">
 
     <div class="col-md-8">
-        <img class="img-responsive" src="http://placehold.it/750x500" alt="">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/rj_-PoKbw0Q" frameborder="0" allowfullscreen></iframe>
+        </div>
     </div>
 
     <div class="col-md-4">

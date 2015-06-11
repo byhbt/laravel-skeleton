@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Video;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -58,10 +58,10 @@ class VideoController extends Controller
 
         return Redirect::route('video.list', $data);
     }
-    
+
     /**
      * Display detail of video
-     * 
+     *
      * @return type
      */
     public function detail()

@@ -18,7 +18,7 @@
                     <a href="#">Sân chơi</a>
                 </li>
                 <li>
-                    <a href="#">Video Clip</a>
+                    <a href="#">Video Clips</a>
                 </li>
                 <li>
                     <a href="#">Tin tức</a>
