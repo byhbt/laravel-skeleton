@@ -15,6 +15,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link href="{{ URL::asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="{{ URL::asset('assets/css/AdminLTE.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -58,7 +60,7 @@ desired effect
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="{{ route('dashboard.index') }}" class="logo">
+        <a href="{{ route('dashboard.home') }}" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>SIB</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -218,7 +220,7 @@ desired effect
 
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
-            @include('admin.layouts.navigation')
+            @include('backend.layouts.navigation')
         </section>
         <!-- /.sidebar -->
     </aside>
@@ -323,10 +325,7 @@ desired effect
 <script src="{{ URL::asset('assets/js/app.min.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/js/bootbox.min.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/js/main.js') }}" type="text/javascript"></script>
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-      Both of these plugins are recommended to enhance the
-      user experience. Slimscroll is required when using the
-      fixed layout. -->
+<!-- Bootstrap WYSIHTML5 -->
+<script src="{{ URL::asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}" type="text/javascript"></script>
 </body>
 </html>

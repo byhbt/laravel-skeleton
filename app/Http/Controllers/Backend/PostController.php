@@ -1,9 +1,4 @@
 <?php
-
-namespace App\Http\Controllers\Backend;
-
-use Illuminate\Routing\Controller;
-
 /**
  * User Spoken Languages database migration
  *
@@ -17,13 +12,20 @@ use Illuminate\Routing\Controller;
  * @since      Class available since Release 4.0
  */
 
-class DashboardController extends Controller
-{
+namespace App\Http\Controllers\Backend;
 
+
+use Symfony\Component\HttpKernel\Tests\Controller;
+
+class PostController extends Controller
+{
     public function show()
     {
-        $data = [];
 
-        return view('backend.dashboard.index', $data);
+    }
+
+    public function showCategory()
+    {
+
     }
 }

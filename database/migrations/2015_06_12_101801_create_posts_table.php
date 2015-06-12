@@ -3,9 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVideosTable extends Migration
+class CreatePostsTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,14 +12,14 @@ class CreateVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function(Blueprint $table) {
+        Schema::create('posts', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('youtube_id')->unique();
             $table->string('title');
-            $table->string('slug');
-            $table->text('description');
+            $table->text('content');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('video_categories');
+            $table->foreign('category_id')->references('id')->on('post_categories');
             $table->timestamps();
         });
     }
@@ -32,7 +31,6 @@ class CreateVideosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('videos');
+        Schema::drop('posts');
     }
-
 }

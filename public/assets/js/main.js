@@ -59,8 +59,16 @@ $('.edit-language').on('click', function () {
     });
 });
 
-$('.delete-language').on('click', function () {
+$('.btn-delete').on('click', function () {
+    var form = $(this).closest('form');
+
     bootbox.confirm("Are you sure?", function(result) {
-        console.log(result);
+        if(result == true) {
+            form.submit();
+        }
     });
+});
+
+$(document).ready(function(){
+    $('.textarea').wysihtml5();
 });

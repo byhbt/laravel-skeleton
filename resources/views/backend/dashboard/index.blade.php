@@ -1,8 +1,7 @@
+@extends('backend.layouts.master')
 @section('content')
 <!-- Main content -->
 <section class="content">
-
-    <!-- Your Page Content Here -->asdasdasd
-
+asdasdasd
 </section><!-- /.content -->
 @stop

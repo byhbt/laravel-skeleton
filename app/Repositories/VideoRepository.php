@@ -31,6 +31,10 @@ class VideoRepository implements VideoInterface
         return $this->model->all($columns);
     }
 
+    public function paginate($perPage = 10) {
+        return $this->model->paginate($perPage);
+    }
+
     public function create(array $data)
     {
         return $this->model->create($data);

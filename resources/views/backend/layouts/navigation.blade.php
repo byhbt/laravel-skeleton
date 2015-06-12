@@ -26,10 +26,23 @@
             <li><a href="#">{{ _('Create') }}</a></li>
         </ul>
     </li>
+    <li class="header">{{ _('Video') }}</li>
+    <li class="treeview">
+        <a href="#"><i class="fa fa-file-text-o"></i> <span>{{ _('Videos') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="treeview-menu">
+            <li><a href="{{ route('backend.video.list') }}">{{ _('List') }}</a></li>
+            <li><a href="{{ route('backend.video.create') }}">{{ _('Create') }}</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="#"><i class="fa fa-file-text-o"></i> <span>{{ _('Videos Categories') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="treeview-menu">
+            <li><a href="{{ route('backend.video.list') }}">{{ _('List') }}</a></li>
+            <li><a href="{{ route('backend.video.list') }}">{{ _('Create') }}</a></li>
+        </ul>
+    </li>
     <li class="header">System</li>
     <!-- Optionally, you can add icons to the links -->
-    <li><a href="{{ route('language.index') }}"><i class="fa fa-language"></i> <span>{{ _('Languages') }}</span></a></li>
-    <li><a href="{{ route('domain.index') }}"><i class="fa fa-globe"></i> <span>{{ _('Domains') }}</span></a></li>
     <li class="treeview">
         <a href="#"><i class="fa fa-users"></i> <span>{{ _('Users') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
