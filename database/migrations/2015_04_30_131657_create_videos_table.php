@@ -18,6 +18,7 @@ class CreateVideosTable extends Migration
             $table->string('youtube_id')->unique();
             $table->string('title');
             $table->string('slug');
+            $table->tinyInteger('status');
             $table->text('description');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('video_categories');

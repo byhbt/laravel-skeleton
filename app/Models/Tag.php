@@ -3,25 +3,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Video extends Model
+class Tag extends Model
 {
-    /**
-     * Define relationship
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function favorites()
+    public function posts()
     {
-        return $this->belongsToMany('App\Favorite');
+        return $this->belongsToMany('App\Models\Post');
     }
 
-    /**
-     * Define relationship
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function tags()
+    public function videos()
     {
-        return $this->belongsToMany('App\Tag');
+        return $this->belongsToMany('App\Models\Video');
     }
 }
