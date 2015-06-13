@@ -1,7 +1,8 @@
 <?php
 namespace App\Repositories;
 
-use App\Repositories\VideoInterface;
+use App\Models\Post;
+use App\Repositories\PostInterface;
 use App\Models\Video;
 
 /**
@@ -17,13 +18,13 @@ use App\Models\Video;
  * @since      Class available since Release 4.0
  */
 
-class VideoRepository implements VideoInterface
+class PostRepository implements PostInterface
 {
     protected $model;
 
-    public function __construct(Video $video)
+    public function __construct(Post $post)
     {
-        $this->model = $video;
+        $this->model = $post;
     }
 
     public function all($columns = ['*'])

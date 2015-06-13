@@ -1,7 +1,8 @@
 <?php
 namespace App\Repositories;
 
-use App\Repositories\VideoInterface;
+use App\Models\PostCategory;
+use App\Repositories\PostCategoryInterface;
 use App\Models\Video;
 
 /**
@@ -17,13 +18,13 @@ use App\Models\Video;
  * @since      Class available since Release 4.0
  */
 
-class VideoRepository implements VideoInterface
+class PostCategoryRepository implements PostCategoryInterface
 {
     protected $model;
 
-    public function __construct(Video $video)
+    public function __construct(PostCategory $postCategory)
     {
-        $this->model = $video;
+        $this->model = $postCategory;
     }
 
     public function all($columns = ['*'])

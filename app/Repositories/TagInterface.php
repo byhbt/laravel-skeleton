@@ -14,7 +14,7 @@ namespace App\Repositories;
  * @since      Class available since Release 4.0
  */
 
-interface VideoInterface
+interface TagInterface
 {
     public function all($columns = ['*']);
 

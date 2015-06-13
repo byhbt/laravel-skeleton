@@ -1,7 +1,8 @@
 <?php
 namespace App\Repositories;
 
-use App\Repositories\VideoInterface;
+use App\Models\Tag;
+use App\Repositories\TagInterface;
 use App\Models\Video;
 
 /**
@@ -17,13 +18,13 @@ use App\Models\Video;
  * @since      Class available since Release 4.0
  */
 
-class VideoRepository implements VideoInterface
+class TagRepository implements TagInterface
 {
     protected $model;
 
-    public function __construct(Video $video)
+    public function __construct(Tag $tag)
     {
-        $this->model = $video;
+        $this->model = $tag;
     }
 
     public function all($columns = ['*'])
