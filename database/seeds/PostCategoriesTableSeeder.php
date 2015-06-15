@@ -10,15 +10,18 @@ class PostCategoriesTableSeeder extends DatabaseSeeder
      */
     public function run()
     {
-        DB::table('users')->truncate();
+        DB::table('post_categories')->truncate();
 
-        $users = [
-            'email'       => 'admin@admin.com',
-            'name'  => 'Admin',
-            'password'    => Hash::make('123456'),
+        $categories = [
+            'Vietnam',
+            'International',
+            'Touraments',
+            'Other'
         ];
-        
-        DB::table('users')->insert($users);
+
+        foreach ($categories as $category) {
+            DB::table('post_categories')->insert(['name' => $category]);
+        }
     }
 
 }

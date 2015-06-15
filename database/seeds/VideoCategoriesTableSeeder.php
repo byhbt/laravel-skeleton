@@ -10,15 +10,17 @@ class VideoCategoriesTableSeeder extends DatabaseSeeder
      */
     public function run()
     {
-        DB::table('users')->truncate();
+        DB::table('video_categories')->truncate();
 
-        $users = [
-            'email'       => 'admin@admin.com',
-            'name'  => 'Admin',
-            'password'    => Hash::make('123456'),
+        $categories = [
+            'Match',
+            'Training',
+            'Mix'
         ];
-        
-        DB::table('users')->insert($users);
+
+        foreach ($categories as $category) {
+            DB::table('video_categories')->insert(['name' => $category]);
+        }
     }
 
 }

@@ -1,4 +1,5 @@
 <?php
+use App\Models\Post;
 
 class PostTableSeeder extends DatabaseSeeder
 {
@@ -10,15 +11,19 @@ class PostTableSeeder extends DatabaseSeeder
      */
     public function run()
     {
-        DB::table('users')->truncate();
+        DB::table('posts')->truncate();
+        $faker = Faker\Factory::create();
 
-        $users = [
-            'email'       => 'admin@admin.com',
-            'name'  => 'Admin',
-            'password'    => Hash::make('123456'),
-        ];
-        
-        DB::table('users')->insert($users);
+        for($i = 0; $i < 100; $i++) {
+            $post = Post::create([
+                'title'        => $faker->sentence(6),
+                'content'      => $faker->text(200),
+                'featured_img' => $faker->imageUrl(400, 200),
+                'status'       => $faker->randomElement([1,2]),
+                'user_id'      => $faker->randomElement([1,2,3]),
+                'category_id'  => $faker->randomElement([1,2,3])
+            ]);
+        }
     }
 
 }

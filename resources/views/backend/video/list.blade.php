@@ -9,6 +9,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        @include('backend.partials.message')
                         <table class="table table-bordered">
                             <thead>
                                 <th style="width: 5%">{{_('ID')}}</th>
@@ -27,13 +28,14 @@
                                     <td>{{ $video->created_at }}</td>
                                     <td>{{ $video->updated_at }}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="{{ route('backend.video.edit', $video->id) }}"><i class="fa fa-pencil-square-o"></i>
-                                            </a>
                                         <form method="post" action="{{ route('backend.video.delete', $video->id) }}">
-                                            <button type="button" class="btn-delete btn btn-danger pull-right" style="margin-right: 5px;">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <button type="button" class="btn-delete btn btn-danger pull-right">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>
+                                        <a style="margin-right: 5px;" class="btn btn-primary pull-right" href="{{ route('backend.video.edit', $video->id) }}"><i class="fa fa-pencil-square-o"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

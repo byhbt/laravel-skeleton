@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('post_categories');
-            $table->timestamps('published_at');
+            $table->dateTime('published_at');
             $table->timestamps();
         });
     }
