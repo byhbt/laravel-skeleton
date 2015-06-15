@@ -15,9 +15,9 @@ class CreateTagVideoTable extends Migration
         Schema::create('tag_video', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('video_id')->unsigned();
-            $table->foreign('video_id')->references('id')->on('videos');
+            $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');;
             $table->integer('tag_id')->unsigned();
-            $table->foreign('tag_id')->references('id')->on('tags');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');;
         });
     }
 

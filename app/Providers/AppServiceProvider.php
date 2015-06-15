@@ -35,6 +35,22 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Repositories\VideoInterface', 'App\Repositories\VideoRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\VideoCategoryInterface', 'App\Repositories\VideoCategoryRepository'
+        );
+
+        $this->app->bind(
+            'App\Repositories\TagInterface', 'App\Repositories\TagRepository'
+        );
+
+        $this->app->bind(
+            'App\Repositories\PostInterface', 'App\Repositories\PostRepository'
+        );
+
+        $this->app->bind(
+            'App\Repositories\PostCategoryInterface', 'App\Repositories\PostCategoryRepository'
+        );
     }
 
 }

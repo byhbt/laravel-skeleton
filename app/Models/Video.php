@@ -9,7 +9,7 @@ class Video extends Model
     const PENDING_STATUS = 2; // Not updated information or wait for future update
     const INVALID_STATUS = 3;
 
-    protected $fillable = ['youtube_id', 'title', 'description'];
+    protected $fillable = ['youtube_id', 'title', 'description', 'category_id'];
 
     public function tags()
     {

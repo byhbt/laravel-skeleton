@@ -321,6 +321,7 @@ desired effect
 <script src="{{ URL::asset('assets/js/jquery-2.1.4.min.js') }}" type="text/javascript"></script>
 <!-- Bootstrap 3.3.2 JS -->
 <script src="{{ URL::asset('assets/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+<script src="{{ URL::asset('assets/js/speakingurl.min.js') }}" type="text/javascript"></script>
 <!-- AdminLTE App -->
 <script src="{{ URL::asset('assets/js/app.min.js') }}" type="text/javascript"></script>
 <script src="{{ URL::asset('assets/js/bootbox.min.js') }}" type="text/javascript"></script>

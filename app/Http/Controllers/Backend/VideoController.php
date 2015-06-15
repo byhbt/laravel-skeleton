@@ -42,8 +42,12 @@ class VideoController extends Controller
     public function show()
     {
         $videos = $this->video->paginate();
+        $categories = $this->videoCategory->all();
 
-        $data = ['videos' => $videos];
+        $data = [
+            'videos' => $videos,
+            'categories' => $categories->lists('name', 'id')
+        ];
 
         return view('backend.video.list', $data);
     }
@@ -57,7 +61,9 @@ class VideoController extends Controller
     {
         // Get all categories
         $categories = $this->videoCategory->all();
-        $data = ['categories' => $categories];
+        $data = [
+            'categories' => $categories->lists('name', 'id')
+        ];
 
         return view('backend.video.create', $data);
     }
@@ -71,7 +77,7 @@ class VideoController extends Controller
     public function store(VideoValidator $validator)
     {
         if ($validator->with(Input::all())->passes()) {
-            $this->video->create(Input::only('title', 'description', 'slug', 'youtube_id'));
+            $this->video->create(Input::except('_token', '_wysihtml5_mode'));
             $message = _("Video has been created successfully.");
         } else {
             $message = _($validator->errors());
@@ -94,7 +100,7 @@ class VideoController extends Controller
 
         $data = [
             'video' => $video,
-            'categories' => $categories
+            'categories' => $categories->lists('name', 'id')
         ];
 
         return view('backend.video.edit', $data);
@@ -117,7 +123,7 @@ class VideoController extends Controller
         }
 
         if ($validator->with(Input::all())->passes()) {
-            $this->video->update(Input::only('title', 'description', 'slug', 'youtube_id'), $id);
+            $this->video->update(Input::except('_token', '_wysihtml5_mode'), $id);
             $message = _("Video has been updated successfully.");
             return Redirect::route('backend.video.list')->with('success', $message);
         } else {
@@ -143,5 +149,10 @@ class VideoController extends Controller
     public function showCategory()
     {
         return view('backend.video.list');
+    }
+
+    public function showCrawler()
+    {
+        return view('backend.video.crawler');
     }
 }

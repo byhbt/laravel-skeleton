@@ -31,10 +31,12 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Backend'), function()
     Route::get('video/{id}', ['as' => 'backend.video.edit', 'uses' => 'VideoController@edit']);
     Route::post('video/{id}', ['as' => 'backend.video.update', 'uses' => 'VideoController@update']);
 
-    Route::post('video/delete/{id}', ['as' => 'backend.video.delete', 'uses' => 'VideoController@delete']);
+    Route::post('video/delete/{id}', ['as' => 'backend.video.delete', 'uses' => 'VideoController@destroy']);
 
     Route::get('video-category', ['as' => 'backend.video.category.list', 'uses' => 'VideoController@showCategory']);
     Route::post('video-category', ['as' => 'backend.video.category.save', 'uses' => 'VideoController@saveCategory']);
+
+    Route::get('video-crawler', ['as' => 'backend.video.crawler', 'uses' => 'VideoController@showCrawler']);
 
     Route::get('post', ['as' => 'backend.post.list', 'uses' => 'PostController@show']);
     Route::get('post-category', ['as' => 'backend.post.category.list', 'uses' => 'PostController@showCategory']);

@@ -10,6 +10,14 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         @include('backend.partials.message')
+                        <div class="row">
+                            <div class="col-sm-6 form-group pull-right">
+                                <label for="categories" class="col-sm-2 control-label">Categories</label>
+                                <div class="col-sm-6">
+                                    {!! Form::select('category_id', $categories, null, ['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                        </div>
                         <table class="table table-bordered">
                             <thead>
                                 <th style="width: 5%">{{_('ID')}}</th>

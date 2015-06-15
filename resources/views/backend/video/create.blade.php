@@ -31,6 +31,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="categories" class="col-sm-2 control-label">Categories</label>
+                                <div class="col-sm-10">
+                                    {!! Form::select('category_id', $categories, null,['class' => 'form-control']) !!}
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="slug" class="col-sm-2 control-label">Description</label>
                                 <div class="col-sm-10">
                                     <textarea name="description" id="textarea" class="form-control textarea" cols="30" rows="10"></textarea>

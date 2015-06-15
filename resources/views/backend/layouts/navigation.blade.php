@@ -32,7 +32,7 @@
         <ul class="treeview-menu">
             <li><a href="{{ route('backend.video.list') }}">{{ _('List') }}</a></li>
             <li><a href="{{ route('backend.video.create') }}">{{ _('Create') }}</a></li>
-            <li><a href="{{ route('backend.video.list') }}">{{ _('Crawler') }}</a></li>
+            <li><a href="{{ route('backend.video.crawler') }}">{{ _('Crawler') }}</a></li>
         </ul>
     </li>
     <li class="treeview">
