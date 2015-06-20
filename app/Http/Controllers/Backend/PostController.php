@@ -14,17 +14,48 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Illuminate\Routing\Controller;
+use App\Repositories\PostInterface;
 
-use Symfony\Component\HttpKernel\Tests\Controller;
 
 class PostController extends Controller
 {
+    protected $postsRepository;
+
+    public function __construct(PostInterface $postInterface)
+    {
+        $this->postsRepository = $postInterface;
+    }
+
+    /**
+     * Show list of posts in backend
+     *
+     * @return \Illuminate\View\View
+     */
     public function show()
+    {
+        $posts = $this->postsRepository->paginate();
+
+        return view('backend.post.list', compact('posts'));
+    }
+
+    public function create()
     {
 
     }
 
-    public function showCategory()
+    public function store()
+    {
+
+    }
+
+
+    public function edit()
+    {
+
+    }
+
+    public function update()
     {
 
     }

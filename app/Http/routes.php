@@ -27,7 +27,6 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Backend'), function()
 
     Route::get('video', ['as' => 'backend.video.create', 'uses' => 'VideoController@create']);
     Route::post('video', ['as' => 'backend.video.store', 'uses' => 'VideoController@store']);
-
     Route::get('video/{id}', ['as' => 'backend.video.edit', 'uses' => 'VideoController@edit']);
     Route::post('video/{id}', ['as' => 'backend.video.update', 'uses' => 'VideoController@update']);
 
@@ -38,6 +37,10 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Backend'), function()
 
     Route::get('video-crawler', ['as' => 'backend.video.crawler', 'uses' => 'VideoController@showCrawler']);
 
-    Route::get('post', ['as' => 'backend.post.list', 'uses' => 'PostController@show']);
+    Route::get('post', ['as' => 'backend.post.create', 'uses' => 'PostController@create']);
+    Route::post('post', ['as' => 'backend.post.store', 'uses' => 'PostController@store']);
+    Route::get('post/{id}', ['as' => 'backend.post.edit', 'uses' => 'PostController@edit']);
+    Route::post('post/{id}', ['as' => 'backend.post.update', 'uses' => 'PostController@update']);
+
     Route::get('post-category', ['as' => 'backend.post.category.list', 'uses' => 'PostController@showCategory']);
 });
