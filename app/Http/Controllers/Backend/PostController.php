@@ -14,6 +14,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\StorePostRequest;
 use App\Repositories\PostCategoryInterface;
 use App\Repositories\PostInterface;
 use Illuminate\Routing\Controller;
@@ -61,22 +62,15 @@ class PostController extends Controller
         return view('backend.post.create', compact('categories'));
     }
 
-    public function store(PostValidator $validator)
+    /**
+     * @param StorePostRequest $request
+     * @return mixed
+     */
+    public function store(StorePostRequest $request)
     {
-        $data = Input::except('_token', '_wysihtml5_mode');
-
-        // Get current user id
-        $data['user_id'] = 1;
-
-        if($validator->with($data)->passes()) {
-            $this->postsRepository->create($data);
-            $message = 'Post has been created successfully';
-        } else {
-            $message = $validator->errors();
-            return Redirect::back()->with('error', $message);
-        }
-
-        return Redirect::route('backend.post.list')->with('success', $message);
+        $data = $request->except('_token', '_wysihtml5_mode');
+        $this->postsRepository->create($data);
+        return Redirect::route('backend.post.list')->with('success', trans('post.created_success'));
     }
 
     public function edit($id)
@@ -92,18 +86,16 @@ class PostController extends Controller
         return view('backend.post.edit', compact('post', 'categories'));
     }
 
-    public function update($id)
+    public function update(StorePostRequest $request, $id)
     {
         $post = $this->postsRepository->find($id);
 
         if (!$post) {
-            $message = 'Invalid post';
-            return Redirect::back()->with('error', $message);
+            return Redirect::back()->with('error', trans('post.update.failed'));
         }
 
-        $this->postsRepository->update(Input::except('_token', '_wysihtml5_mode'), $id);
+        $this->postsRepository->update($request->except('_token', '_wysihtml5_mode'), $id);
 
-        $message = 'Post has been updated successfully';
-        return Redirect::route('backend.post.list')->with('success', $message);
+        return Redirect::route('backend.post.list')->with('success', trans('post.update.success'));
     }
 }
