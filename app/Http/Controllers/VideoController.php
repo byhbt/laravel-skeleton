@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Madcoda\Youtube;
 
-
 class VideoController extends Controller
 {
 

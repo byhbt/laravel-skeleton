@@ -10,7 +10,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         @include('backend.partials.message')
-                        <form role="form" action="{{ route('backend.video.store') }}" method="post">
+                        <form role="form" action="{{ route('backend.video.store') }}" method="post" class="form-horizontal">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label for="youtube_id" class="col-sm-2 control-label">Youtube Id</label>

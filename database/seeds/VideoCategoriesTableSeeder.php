@@ -11,6 +11,7 @@ class VideoCategoriesTableSeeder extends DatabaseSeeder
     public function run()
     {
         DB::table('video_categories')->truncate();
+        $faker = Faker\Factory::create();
 
         $categories = [
             'Match',
@@ -19,7 +20,10 @@ class VideoCategoriesTableSeeder extends DatabaseSeeder
         ];
 
         foreach ($categories as $category) {
-            DB::table('video_categories')->insert(['name' => $category]);
+            DB::table('video_categories')->insert([
+                'name' => $category,
+                'slug' => $faker->slug()
+            ]);
         }
     }
 

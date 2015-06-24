@@ -19,8 +19,12 @@ class PostCategoriesTableSeeder extends DatabaseSeeder
             'Other'
         ];
 
+        $faker = Faker\Factory::create();
         foreach ($categories as $category) {
-            DB::table('post_categories')->insert(['name' => $category]);
+            DB::table('post_categories')->insert([
+                'name' => $category,
+                'slug' => $faker->slug()
+            ]);
         }
     }
 

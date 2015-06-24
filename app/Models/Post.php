@@ -5,7 +5,7 @@ use \Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'featured_img', 'content', 'status', 'user_id', 'category_id', 'published_at'];
+    protected $fillable = ['title', 'featured_img', 'slug', 'content', 'status', 'user_id', 'category_id', 'published_at'];
 
     const PUBLISHED_STATUS = 1;
     const PENDING_STATUS = 2;

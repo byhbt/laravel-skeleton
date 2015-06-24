@@ -32,8 +32,8 @@ class PostRepository implements PostInterface
         return $this->model->all($columns);
     }
 
-    public function paginate($perPage = 10) {
-        return $this->model->paginate($perPage);
+    public function paginate($perPage = 10, $orderBy = 'created_at') {
+        return $this->model->orderBy($orderBy, 'desc')->paginate($perPage);
     }
 
     public function create(array $data)

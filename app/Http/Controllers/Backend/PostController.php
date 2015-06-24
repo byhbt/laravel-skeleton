@@ -14,21 +14,30 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Http\Requests\StorePostRequest;
 use App\Repositories\PostCategoryInterface;
-use Illuminate\Routing\Controller;
 use App\Repositories\PostInterface;
-use Exception;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+use App\Validator\PostValidator;
 
 class PostController extends Controller
 {
+    /**
+     *
+     */
     protected $postsRepository;
 
-    protected $postCategoryRepository;
+    /**
+     *
+     */
+    protected $categoryRepository;
 
-    public function __construct(PostInterface $postInterface, PostCategoryInterface $postCategoryInterface)
+    public function __construct(PostInterface $postInterface, PostCategoryInterface $categoryRepository)
     {
         $this->postsRepository = $postInterface;
-        $this->postCategoryRepository = $postCategoryInterface;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -43,39 +52,50 @@ class PostController extends Controller
         return view('backend.post.list', compact('posts'));
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
-        $categories = $this->postCategoryRepository->all(['id', 'name'])->lists('name', 'id');
+        $categories = $this->categoryRepository->all()->lists('name', 'id');
 
         return view('backend.post.create', compact('categories'));
     }
 
-    public function store()
+    /**
+     * @param StorePostRequest $request
+     * @return mixed
+     */
+    public function store(StorePostRequest $request)
     {
-
+        $data = $request->except('_token', '_wysihtml5_mode');
+        $this->postsRepository->create($data);
+        return Redirect::route('backend.post.list')->with('success', trans('post.created_success'));
     }
-
 
     public function edit($id)
     {
         $post = $this->postsRepository->find($id);
-        $categories = $this->postCategoryRepository->all()->lists('name', 'id');
+        $categories = $this->categoryRepository->all()->lists('name', 'id');
+
+        if (!$post) {
+            $message = 'Invalid post';
+            return Redirect::back()->with('success', $message);
+        }
 
         return view('backend.post.edit', compact('post', 'categories'));
     }
 
-    public function update($id)
+    public function update(StorePostRequest $request, $id)
     {
-        try {
-            $post = $this->postsRepository->find($id);
-            if(!$post) {
-                throw new Exception("Not found");
-            }
+        $post = $this->postsRepository->find($id);
 
-            $this->postsRepository->update($id, Input::all());
-        } catch (Exception $e){
-
+        if (!$post) {
+            return Redirect::back()->with('error', trans('post.update.failed'));
         }
 
+        $this->postsRepository->update($request->except('_token', '_wysihtml5_mode'), $id);
+
+        return Redirect::route('backend.post.list')->with('success', trans('post.update.success'));
     }
 }

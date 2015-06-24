@@ -28,11 +28,11 @@
                                     <td>
                                         <form method="post" action="{{ route('backend.video.delete', $post->id) }}">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <button type="button" class="btn-delete btn btn-danger pull-right">
+                                            <button type="button" class="mg2 btn-delete btn btn-danger pull-right">
                                                 <i class="fa fa-trash-o"></i>
                                             </button>
                                         </form>
-                                        <a style="margin-right: 5px;" class="btn btn-primary pull-right" href="{{ route('backend.post.edit', $post->id) }}"><i class="fa fa-pencil-square-o"></i>
+                                        <a class="mg2 btn btn-primary pull-right" href="{{ route('backend.post.edit', $post->id) }}"><i class="fa fa-pencil-square-o"></i>
                                         </a>
                                     </td>
                                 </tr>
