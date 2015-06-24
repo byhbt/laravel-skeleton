@@ -45,7 +45,8 @@ class VideoTableSeeder extends DatabaseSeeder
         foreach($videos as $video) {
             $video = Video::create([
                 'youtube_id' => $video,
-                'title' => $faker->sentence(5),
+                'title' => $faker->unique()->sentence(5),
+                'slug' => $faker->slug(),
                 'description' => $faker->text(100),
                 'category_id' => $faker->randomElement([1,2,3])
             ]);

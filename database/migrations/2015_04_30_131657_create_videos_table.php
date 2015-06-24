@@ -17,7 +17,7 @@ class CreateVideosTable extends Migration
             $table->increments('id');
             $table->string('youtube_id')->unique();
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->tinyInteger('status');
             $table->text('description');
             $table->integer('category_id')->unsigned();

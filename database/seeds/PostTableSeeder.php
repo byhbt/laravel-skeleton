@@ -16,7 +16,8 @@ class PostTableSeeder extends DatabaseSeeder
 
         for($i = 0; $i < 100; $i++) {
             $post = Post::create([
-                'title'        => $faker->sentence(6),
+                'title'        => $faker->unique()->sentence(6),
+                'slug'         => $faker->slug(),
                 'content'      => $faker->text(200),
                 'featured_img' => $faker->imageUrl(400, 200),
                 'status'       => $faker->randomElement([1,2]),

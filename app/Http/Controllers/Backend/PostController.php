@@ -14,17 +14,21 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Repositories\PostCategoryInterface;
 use Illuminate\Routing\Controller;
 use App\Repositories\PostInterface;
-
+use Exception;
 
 class PostController extends Controller
 {
     protected $postsRepository;
 
-    public function __construct(PostInterface $postInterface)
+    protected $postCategoryRepository;
+
+    public function __construct(PostInterface $postInterface, PostCategoryInterface $postCategoryInterface)
     {
         $this->postsRepository = $postInterface;
+        $this->postCategoryRepository = $postCategoryInterface;
     }
 
     /**
@@ -41,7 +45,9 @@ class PostController extends Controller
 
     public function create()
     {
+        $categories = $this->postCategoryRepository->all(['id', 'name'])->lists('name', 'id');
 
+        return view('backend.post.create', compact('categories'));
     }
 
     public function store()
@@ -50,13 +56,26 @@ class PostController extends Controller
     }
 
 
-    public function edit()
+    public function edit($id)
     {
+        $post = $this->postsRepository->find($id);
+        $categories = $this->postCategoryRepository->all()->lists('name', 'id');
 
+        return view('backend.post.edit', compact('post', 'categories'));
     }
 
-    public function update()
+    public function update($id)
     {
+        try {
+            $post = $this->postsRepository->find($id);
+            if(!$post) {
+                throw new Exception("Not found");
+            }
+
+            $this->postsRepository->update($id, Input::all());
+        } catch (Exception $e){
+
+        }
 
     }
 }
