@@ -14,12 +14,12 @@ namespace App\Validator;
  * @since      Class available since Release 4.0
  */
 
-class VideoValidator extends ValidatorAbstract{
+class PostValidator extends ValidatorAbstract{
+
     protected $rules = [
-        'youtube_id' => 'required',
-//        'youtube_id' => 'required|unique:videos,youtube_id',
         'slug' => 'required',
         'title' => 'required',
+        'content' => 'required',
         'category_id' => 'required',
     ];
 }

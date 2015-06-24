@@ -16,7 +16,7 @@
         <a href="#"><i class="fa fa-file-text-o"></i> <span>{{ _('Posts') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
             <li><a href="{{ route('backend.post.list') }}">{{ _('List') }}</a></li>
-            <li><a href="#">{{ _('Create') }}</a></li>
+            <li><a href="{{ route('backend.post.create') }}">{{ _('Create') }}</a></li>
         </ul>
     </li>
     <li class="treeview">

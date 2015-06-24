@@ -14,17 +14,29 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Routing\Controller;
+use App\Repositories\PostCategoryInterface;
 use App\Repositories\PostInterface;
-
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+use App\Validator\PostValidator;
 
 class PostController extends Controller
 {
+    /**
+     *
+     */
     protected $postsRepository;
 
-    public function __construct(PostInterface $postInterface)
+    /**
+     *
+     */
+    protected $categoryRepository;
+
+    public function __construct(PostInterface $postInterface, PostCategoryInterface $postCategoryInterface)
     {
         $this->postsRepository = $postInterface;
+        $this->categoryRepository = $postCategoryInterface;
     }
 
     /**
@@ -39,24 +51,59 @@ class PostController extends Controller
         return view('backend.post.list', compact('posts'));
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
+        $categories = $this->categoryRepository->all()->lists('name', 'id');
 
+        return view('backend.post.create', compact('categories'));
     }
 
-    public function store()
+    public function store(PostValidator $validator)
     {
+        $data = Input::except('_token', '_wysihtml5_mode');
 
+        // Get current user id
+        $data['user_id'] = 1;
+
+        if($validator->with($data)->passes()) {
+            $this->postsRepository->create($data);
+            $message = 'Post has been created successfully';
+        } else {
+            $message = $validator->errors();
+            return Redirect::back()->with('error', $message);
+        }
+
+        return Redirect::route('backend.post.list')->with('success', $message);
     }
 
-
-    public function edit()
+    public function edit($id)
     {
+        $post = $this->postsRepository->find($id);
+        $categories = $this->categoryRepository->all()->lists('name', 'id');
 
+        if (!$post) {
+            $message = 'Invalid post';
+            return Redirect::back()->with('success', $message);
+        }
+
+        return view('backend.post.edit', compact('post', 'categories'));
     }
 
-    public function update()
+    public function update($id)
     {
+        $post = $this->postsRepository->find($id);
 
+        if (!$post) {
+            $message = 'Invalid post';
+            return Redirect::back()->with('error', $message);
+        }
+
+        $this->postsRepository->update(Input::except('_token', '_wysihtml5_mode'), $id);
+
+        $message = 'Post has been updated successfully';
+        return Redirect::route('backend.post.list')->with('success', $message);
     }
 }
