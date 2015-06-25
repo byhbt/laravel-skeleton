@@ -21,7 +21,7 @@ class CreateVideosTable extends Migration
             $table->tinyInteger('status');
             $table->text('description');
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('video_categories');
+            $table->foreign('category_id')->references('id')->on('video_categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -18,6 +18,8 @@ interface PostInterface
 {
     public function all($columns = ['*']);
 
+    public function paginate($perPage = 10, $orderBy = 'created_at');
+
     public function create(array $data);
 
     public function update(array $data, $id);

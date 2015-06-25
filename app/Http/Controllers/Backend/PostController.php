@@ -45,7 +45,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show()
+    public function index()
     {
         $posts = $this->postsRepository->paginate();
 
@@ -91,11 +91,24 @@ class PostController extends Controller
         $post = $this->postsRepository->find($id);
 
         if (!$post) {
-            return Redirect::back()->with('error', trans('post.update.failed'));
+            return Redirect::back()->with('error', trans('post.not_found'));
         }
 
         $this->postsRepository->update($request->except('_token', '_wysihtml5_mode'), $id);
 
         return Redirect::route('backend.post.list')->with('success', trans('post.update.success'));
+    }
+
+    public function destroy($id)
+    {
+        $post = $this->postsRepository->find($id);
+
+        if (!$post) {
+            return Redirect::back()->with('error', trans('post.not_found'));
+        }
+
+        $this->postsRepository->delete($id);
+
+        return Redirect::route('backend.post.list')->with('success', trans('post.delete.success'));
     }
 }

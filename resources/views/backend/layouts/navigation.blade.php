@@ -22,8 +22,8 @@
     <li class="treeview">
         <a href="#"><i class="fa fa-folder-open"></i> <span>{{ _('Categories') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-            <li><a href="#">{{ _('List') }}</a></li>
-            <li><a href="#">{{ _('Create') }}</a></li>
+            <li><a href="{{ route('backend.post.category.list') }}">{{ _('List') }}</a></li>
+            <li><a href="{{ route('backend.post.category.create') }}">{{ _('Create') }}</a></li>
         </ul>
     </li>
     <li class="header">{{ _('Video') }}</li>
@@ -38,8 +38,8 @@
     <li class="treeview">
         <a href="#"><i class="fa fa-file-text-o"></i> <span>{{ _('Videos Categories') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-            <li><a href="{{ route('backend.video.list') }}">{{ _('List') }}</a></li>
-            <li><a href="{{ route('backend.video.list') }}">{{ _('Create') }}</a></li>
+            <li><a href="{{ route('backend.video.category.list') }}">{{ _('List') }}</a></li>
+            <li><a href="{{ route('backend.video.category.create') }}">{{ _('Create') }}</a></li>
         </ul>
     </li>
     <li class="header">System</li>

@@ -21,22 +21,32 @@ Route::get('account/facebook', 'Auth\AuthController@facebook');
 Route::group(array('prefix' => 'admin', 'namespace' => 'Backend'), function () {
     Route::get('/', ['as' => 'dashboard.home', 'uses' => 'DashboardController@show']);
 
-    Route::get('video/list', ['as' => 'backend.video.list', 'uses' => 'VideoController@show']);
+    Route::get('video/list', ['as' => 'backend.video.list', 'uses' => 'VideoController@index']);
     Route::get('video', ['as' => 'backend.video.create', 'uses' => 'VideoController@create']);
     Route::post('video', ['as' => 'backend.video.store', 'uses' => 'VideoController@store']);
     Route::get('video/{id}', ['as' => 'backend.video.edit', 'uses' => 'VideoController@edit']);
     Route::post('video/{id}', ['as' => 'backend.video.update', 'uses' => 'VideoController@update']);
-
     Route::post('video/delete/{id}', ['as' => 'backend.video.delete', 'uses' => 'VideoController@destroy']);
-    Route::get('video-category', ['as' => 'backend.video.category.list', 'uses' => 'VideoController@showCategory']);
-    Route::post('video-category', ['as' => 'backend.video.category.save', 'uses' => 'VideoController@saveCategory']);
     Route::get('video-crawler', ['as' => 'backend.video.crawler', 'uses' => 'VideoController@showCrawler']);
 
-    Route::get('post/list', ['as' => 'backend.post.list', 'uses' => 'PostController@show']);
+    Route::get('post/list', ['as' => 'backend.post.list', 'uses' => 'PostController@index']);
     Route::get('post', ['as' => 'backend.post.create', 'uses' => 'PostController@create']);
     Route::post('post', ['as' => 'backend.post.store', 'uses' => 'PostController@store']);
     Route::get('post/{id}', ['as' => 'backend.post.edit', 'uses' => 'PostController@edit']);
     Route::post('post/{id}', ['as' => 'backend.post.update', 'uses' => 'PostController@update']);
+    Route::post('post/delete/{id}', ['as' => 'backend.post.delete', 'uses' => 'PostController@destroy']);
 
-    Route::get('post-category', ['as' => 'backend.post.category.list', 'uses' => 'PostController@showCategory']);
+    Route::get('post/category/list', ['as' => 'backend.post.category.list', 'uses' => 'PostCategoryController@index']);
+    Route::get('post/category/create', ['as' => 'backend.post.category.create', 'uses' => 'PostCategoryController@create']);
+    Route::post('post/category/create', ['as' => 'backend.post.category.store', 'uses' => 'PostCategoryController@store']);
+    Route::get('post/category/edit/{id}', ['as' => 'backend.post.category.edit', 'uses' => 'PostCategoryController@edit']);
+    Route::post('post/category/edit/{id}', ['as' => 'backend.post.category.update', 'uses' => 'PostCategoryController@update']);
+    Route::post('post/category/delete/{id}', ['as' => 'backend.post.category.delete', 'uses' => 'PostCategoryController@destroy']);
+
+    Route::get('video/category/list', ['as' => 'backend.video.category.list', 'uses' => 'VideoCategoryController@index']);
+    Route::get('video/category/create', ['as' => 'backend.video.category.create', 'uses' => 'VideoCategoryController@create']);
+    Route::post('video/category/create', ['as' => 'backend.video.category.store', 'uses' => 'VideoCategoryController@store']);
+    Route::get('video/category/edit/{id}', ['as' => 'backend.video.category.edit', 'uses' => 'VideoCategoryController@edit']);
+    Route::post('video/category/edit/{id}', ['as' => 'backend.video.category.update', 'uses' => 'VideoCategoryController@update']);
+    Route::post('video/category/delete/{id}', ['as' => 'backend.video.category.delete', 'uses' => 'VideoCategoryController@destroy']);
 });

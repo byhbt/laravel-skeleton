@@ -40,16 +40,26 @@ class PostRepository implements PostInterface
 
     public function create(array $data)
     {
+        if(isset($data['featured_img'])) {
+            // Save Physical file
+            $imageName = Helpers::generatePostImage($data['featured_img']);
+
+            // Update file name to database
+            $data['featured_img'] = $imageName;
+        }
+
         return $this->model->create($data);
     }
 
     public function update(array $data, $id, $attribute = 'id')
     {
-        // Save Physical file
-        $imageName = Helpers::generatePostImage($data['featured_img']);
+        if(isset($data['featured_img'])) {
+            // Save Physical file
+            $imageName = Helpers::generatePostImage($data['featured_img']);
 
-        // Update file name to database
-        $data['featured_img'] = $imageName;
+            // Update file name to database
+            $data['featured_img'] = $imageName;
+        }
 
         return $this->model->where($attribute, '=', $id)->update($data);
     }

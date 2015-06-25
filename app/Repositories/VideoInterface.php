@@ -18,6 +18,8 @@ interface VideoInterface
 {
     public function all($columns = ['*']);
 
+    public function paginate($perPage = 10);
+
     public function create(array $data);
 
     public function update(array $data, $id);

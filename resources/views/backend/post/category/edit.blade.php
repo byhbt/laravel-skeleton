@@ -5,25 +5,24 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Create new post</h3>
+                        <h3 class="box-title">Edit category</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         @include('backend.partials.message')
-                        <form role="form" action="{{ route('backend.post.create') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form role="form" action="{{ route('backend.post.category.update', $category->id) }}" method="post" class="form-horizontal">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="user_id" value="1">
                             <div class="form-group">
-                                <label for="title" class="col-sm-2 control-label">Title</label>
+                                <label for="name" class="col-sm-2 control-label">Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="title" class="form-control" id="title" placeholder="Title" value="{{ old('title') }}" />
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Title" value="{{ old('name', $category->name) }}" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="slug" class="col-sm-2 control-label">Slug</label>
                                 <div class="col-sm-10">
                                     <div class="input-group input-group-sm">
-                                        <input type="text" name="slug" class="form-control" id="slug" placeholder="Slug" value="{{ old('slug') }}" />
+                                        <input type="text" name="slug" class="form-control" id="slug" placeholder="Slug" value="{{ old('slug', $category->slug) }}" />
                                         <span class="input-group-btn">
                                             <button class="btn btn-info btn-get-slug" type="button">Get Slug</button>
                                         </span>
@@ -31,20 +30,10 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="content" class="col-sm-2 control-label">Content</label>
+                                <label for="description" class="col-sm-2 control-label">Description</label>
                                 <div class="col-sm-10">
-                                    <textarea name="content" id="content" class="form-control textarea" cols="30" rows="10">{{ old('content') }}</textarea>
+                                    <textarea name="description" id="description" class="form-control textarea" cols="30" rows="10">{{ old('description', $category->description) }}</textarea>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="category_id" class="col-sm-2 control-label">Categories</label>
-                                <div class="col-sm-10">
-                                    {!! Form::select('category_id', $categories, old('category_id'), ['class' => 'form-control', 'id' => 'category_id']) !!}
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="featured_img" class="col-sm-2 control-label">Featured image</label>
-                                <input type="file" name="featured_img" id="featured_img">
                             </div>
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>

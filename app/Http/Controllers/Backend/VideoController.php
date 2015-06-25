@@ -39,7 +39,7 @@ class VideoController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show()
+    public function index()
     {
         $videos = $this->video->paginate();
         $categories = $this->videoCategory->all();

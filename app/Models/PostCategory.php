@@ -5,7 +5,9 @@ use \Illuminate\Database\Eloquent\Model;
 
 class PostCategory extends Model
 {
-    protected $fillable = ['youtube_id', 'title', 'description'];
+    protected $fillable = ['name', 'slug', 'description'];
+
+    public $timestamps = false;
 
     public function posts()
     {

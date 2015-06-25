@@ -7,6 +7,8 @@ class VideoCategory extends Model
 {
     protected $fillable = ['youtube_id', 'title', 'description'];
 
+    public $timestamps = false;
+
     public function videos()
     {
         return $this->belongsToMany('App\Models\Video');
