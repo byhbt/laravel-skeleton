@@ -1,8 +1,8 @@
 <?php
-namespace App\Repositories;
+namespace App\Repositories\Eloquent;
 
-use App\Models\Tag;
-use App\Repositories\TagInterface;
+use App\Models\PostCategory;
+use App\Repositories\PostCategoryInterface;
 use App\Models\Video;
 
 /**
@@ -18,13 +18,13 @@ use App\Models\Video;
  * @since      Class available since Release 4.0
  */
 
-class TagRepository implements TagInterface
+class PostCategoryRepository implements PostCategoryInterface
 {
     protected $model;
 
-    public function __construct(Tag $tag)
+    public function __construct(PostCategory $postCategory)
     {
-        $this->model = $tag;
+        $this->model = $postCategory;
     }
 
     public function all($columns = ['*'])

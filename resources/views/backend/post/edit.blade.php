@@ -42,6 +42,10 @@
                                     {!! Form::select('category_id', $categories, old('category_id', $post->category_id), ['class' => 'form-control']) !!}
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="featured_img" class="col-sm-2 control-label">Featured image</label>
+                                <input type="file" id="featured_img">
+                            </div>
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                     </div>

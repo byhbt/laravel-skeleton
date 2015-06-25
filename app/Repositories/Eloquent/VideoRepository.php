@@ -1,8 +1,7 @@
 <?php
-namespace App\Repositories;
+namespace App\Repositories\Eloquent;
 
-use App\Models\Post;
-use App\Repositories\PostInterface;
+use App\Repositories\VideoInterface;
 use App\Models\Video;
 
 /**
@@ -18,13 +17,13 @@ use App\Models\Video;
  * @since      Class available since Release 4.0
  */
 
-class PostRepository implements PostInterface
+class VideoRepository implements VideoInterface
 {
     protected $model;
 
-    public function __construct(Post $post)
+    public function __construct(Video $video)
     {
-        $this->model = $post;
+        $this->model = $video;
     }
 
     public function all($columns = ['*'])
@@ -32,8 +31,8 @@ class PostRepository implements PostInterface
         return $this->model->all($columns);
     }
 
-    public function paginate($perPage = 10, $orderBy = 'created_at') {
-        return $this->model->orderBy($orderBy, 'desc')->paginate($perPage);
+    public function paginate($perPage = 10) {
+        return $this->model->paginate($perPage);
     }
 
     public function create(array $data)

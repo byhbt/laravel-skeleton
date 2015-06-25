@@ -33,23 +33,23 @@ class AppServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            'App\Repositories\VideoInterface', 'App\Repositories\VideoRepository'
+            'App\Repositories\VideoInterface', 'App\Repositories\Eloquent\VideoRepository'
         );
 
         $this->app->bind(
-            'App\Repositories\VideoCategoryInterface', 'App\Repositories\VideoCategoryRepository'
+            'App\Repositories\VideoCategoryInterface', 'App\Repositories\Eloquent\VideoCategoryRepository'
         );
 
         $this->app->bind(
-            'App\Repositories\TagInterface', 'App\Repositories\TagRepository'
+            'App\Repositories\TagInterface', 'App\Repositories\Eloquent\TagRepository'
         );
 
         $this->app->bind(
-            'App\Repositories\PostInterface', 'App\Repositories\PostRepository'
+            'App\Repositories\PostInterface', 'App\Repositories\Eloquent\PostRepository'
         );
 
         $this->app->bind(
-            'App\Repositories\PostCategoryInterface', 'App\Repositories\PostCategoryRepository'
+            'App\Repositories\PostCategoryInterface', 'App\Repositories\Eloquent\PostCategoryRepository'
         );
     }
 
