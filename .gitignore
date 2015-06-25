@@ -4,3 +4,4 @@
 /bootstrap/compiled.php
 .env
 /.idea
+/public/uploads/*
