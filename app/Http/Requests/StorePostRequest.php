@@ -29,6 +29,7 @@ class StorePostRequest extends Request
             'content' => 'required',
             'category_id' => 'required',
             'user_id' => 'required',
+            'featured_img' => 'required|mimes:jpeg,bmp,png,jpg'
         ];
     }
 }

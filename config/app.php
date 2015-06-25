@@ -129,7 +129,8 @@ return [
         'App\Providers\EventServiceProvider',
         'App\Providers\RouteServiceProvider',
         'Laravel\Socialite\SocialiteServiceProvider',
-        'Illuminate\Html\HtmlServiceProvider'
+        'Illuminate\Html\HtmlServiceProvider',
+        'Intervention\Image\ImageServiceProvider'
     ],
     /*
       |--------------------------------------------------------------------------
@@ -177,6 +178,7 @@ return [
         'View'      => 'Illuminate\Support\Facades\View',
         'Socialize' => 'Laravel\Socialite\Facades\Socialite',
         'Form'      => 'Illuminate\Html\FormFacade',
-        'HTML'      => 'Illuminate\Html\HtmlFacade'
+        'HTML'      => 'Illuminate\Html\HtmlFacade',
+        'Image'     => 'Intervention\Image\Facades\Image'
     ],
 ];

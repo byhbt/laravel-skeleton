@@ -10,7 +10,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         @include('backend.partials.message')
-                        <form role="form" action="{{ route('backend.post.update', $post->id) }}" method="post" class="form-horizontal">
+                        <form role="form" action="{{ route('backend.post.update', $post->id) }}"  enctype="multipart/form-data" method="post" class="form-horizontal">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="user_id" value="1">
                             <div class="form-group">
@@ -44,7 +44,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="featured_img" class="col-sm-2 control-label">Featured image</label>
-                                <input type="file" id="featured_img">
+                                <input type="file" id="featured_img" name="featured_img">
                             </div>
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>

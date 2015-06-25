@@ -4,6 +4,8 @@ namespace App\Repositories\Eloquent;
 use App\Models\Post;
 use App\Repositories\PostInterface;
 use App\Models\Video;
+use Intervention\Image\Facades\Image;
+use Helpers;
 
 /**
  * User Spoken Languages database migration
@@ -43,6 +45,12 @@ class PostRepository implements PostInterface
 
     public function update(array $data, $id, $attribute = 'id')
     {
+        // Save Physical file
+        $imageName = Helpers::generatePostImage($data['featured_img']);
+
+        // Update file name to database
+        $data['featured_img'] = $imageName;
+
         return $this->model->where($attribute, '=', $id)->update($data);
     }
 
