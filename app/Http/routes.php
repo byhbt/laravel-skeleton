@@ -49,4 +49,11 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Backend'), function () {
     Route::get('video/category/edit/{id}', ['as' => 'backend.video.category.edit', 'uses' => 'VideoCategoryController@edit']);
     Route::post('video/category/edit/{id}', ['as' => 'backend.video.category.update', 'uses' => 'VideoCategoryController@update']);
     Route::post('video/category/delete/{id}', ['as' => 'backend.video.category.delete', 'uses' => 'VideoCategoryController@destroy']);
+
+    Route::get('user/list', ['as' => 'backend.user.list', 'uses' => 'UserController@index']);
+    Route::get('user', ['as' => 'backend.user.create', 'uses' => 'UserController@create']);
+    Route::post('user', ['as' => 'backend.user.store', 'uses' => 'UserController@store']);
+    Route::get('user/{id}', ['as' => 'backend.user.edit', 'uses' => 'UserController@edit']);
+    Route::post('user/{id}', ['as' => 'backend.user.update', 'uses' => 'UserController@update']);
+    Route::post('user/delete/{id}', ['as' => 'backend.user.delete', 'uses' => 'UserController@destroy']);
 });

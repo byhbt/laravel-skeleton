@@ -30,7 +30,8 @@ class UserTableSeeder extends DatabaseSeeder
             $user = User::create([
                 'email'    => $faker->email,
                 'name'     => $faker->userName,
-                'password' => Hash::make('123456')
+                'password' => Hash::make('123456'),
+                'last_logged' => $faker->dateTimeThisMonth($max = 'now')
             ]);
         }
     }

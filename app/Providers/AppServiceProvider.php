@@ -51,6 +51,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Repositories\PostCategoryInterface', 'App\Repositories\Eloquent\PostCategoryRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\UserInterface', 'App\Repositories\Eloquent\UserRepository'
+        );
     }
 
 }

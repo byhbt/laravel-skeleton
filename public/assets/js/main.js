@@ -72,8 +72,7 @@ $('.btn-delete').on('click', function () {
 $(document).ready(function(){
     $('.textarea').wysihtml5();
     $('.btn-get-slug').click(function() {
-        var title = $('#title').val();
-        console.log(title);
+        var title = $('#title').val() || $('#name').val();
         $('#slug').val(getSlug(title));
     })
 });

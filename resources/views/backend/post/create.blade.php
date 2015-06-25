@@ -46,7 +46,7 @@
                                 <label for="featured_img" class="col-sm-2 control-label">Featured image</label>
                                 <input type="file" name="featured_img" id="featured_img">
                             </div>
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-primary">Create</button>
                         </form>
                     </div>
                 </div>

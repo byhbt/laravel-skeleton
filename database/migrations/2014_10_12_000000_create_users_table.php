@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->tinyInteger('city');
             $table->rememberToken();
+            $table->dateTime('last_logged');
             $table->timestamps();
         });
     }

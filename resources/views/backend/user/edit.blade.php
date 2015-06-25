@@ -15,13 +15,13 @@
                             <div class="form-group">
                                 <label for="email" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" name="email" class="form-control" id="title" placeholder="Email" value="{{ old('email') }}" />
+                                    <input type="email" name="email" class="form-control" id="title" placeholder="Email" value="{{ old('email', $user->email) }}" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="name" class="col-sm-2 control-label">Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Name" value="{{ old('name') }}" />
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Name" value="{{ old('name', $user->name) }}" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -36,7 +36,7 @@
                                     <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Confirm password" value="" />
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                     </div>
                 </div>

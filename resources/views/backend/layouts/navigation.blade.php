@@ -47,8 +47,8 @@
     <li class="treeview">
         <a href="#"><i class="fa fa-users"></i> <span>{{ _('Users') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-            <li><a href="#">{{ _('List') }}</a></li>
-            <li><a href="#">{{ _('Create') }}</a></li>
+            <li><a href="{{ route('backend.user.list') }}">{{ _('List') }}</a></li>
+            <li><a href="{{ route('backend.user.create') }}">{{ _('Create') }}</a></li>
         </ul>
     </li>
 </ul><!-- /.sidebar-menu -->
