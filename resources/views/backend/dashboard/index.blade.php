@@ -2,6 +2,6 @@
 @section('content')
 <!-- Main content -->
 <section class="content">
-asdasdasd
+Backend - Dashboard
 </section><!-- /.content -->
 @stop

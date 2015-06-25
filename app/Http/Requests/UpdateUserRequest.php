@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class StoreUserRequest extends Request
+class UpdateUserRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +26,8 @@ class StoreUserRequest extends Request
         return [
             'name' => 'required|max:255',
             'email' => 'required|email',
-            'password' => 'required|confirmed|min:6',
-            'password_confirmation' => 'required_with:password|confirmed|min:6',
+            'password' => 'min:6',
+            'password_confirmation' => 'required_with:password|min:6',
         ];
     }
 }
