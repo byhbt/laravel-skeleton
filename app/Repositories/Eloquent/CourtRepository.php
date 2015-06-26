@@ -2,9 +2,8 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Court;
-use App\Models\VideoCategory;
+use App\Repositories\CourtInterface;
 use App\Repositories\VideoCategoryInterface;
-use App\Models\Video;
 
 /**
  * User Spoken Languages database migration

@@ -56,6 +56,13 @@
             <li><a href="{{ route('backend.event.create') }}">{{ _('Create') }}</a></li>
         </ul>
     </li>
+    <li class="treeview">
+        <a href="#"><i class="fa fa-fw fa-bullhorn"></i> <span>{{ _('Invitation') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="treeview-menu">
+            <li><a href="{{ route('backend.invitation.list') }}">{{ _('List') }}</a></li>
+            <li><a href="{{ route('backend.invitation.create') }}">{{ _('Create') }}</a></li>
+        </ul>
+    </li>
     <li class="header">System</li>
     <!-- Optionally, you can add icons to the links -->
     <li class="treeview">

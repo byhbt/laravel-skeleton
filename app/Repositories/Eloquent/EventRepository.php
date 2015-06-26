@@ -2,9 +2,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Event;
-use App\Models\VideoCategory;
-use App\Repositories\VideoCategoryInterface;
-use App\Models\Video;
+use App\Repositories\EventInterface;
 
 /**
  * User Spoken Languages database migration

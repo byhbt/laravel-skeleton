@@ -50,6 +50,13 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Backend'), function () {
     Route::post('event/{id}', ['as' => 'backend.event.update', 'uses' => 'EventController@update']);
     Route::post('event/delete/{id}', ['as' => 'backend.event.delete', 'uses' => 'EventController@destroy']);
 
+    Route::get('invitation/list', ['as' => 'backend.invitation.list', 'uses' => 'InvitationController@index']);
+    Route::get('invitation', ['as' => 'backend.invitation.create', 'uses' => 'InvitationController@create']);
+    Route::post('invitation', ['as' => 'backend.invitation.store', 'uses' => 'InvitationController@store']);
+    Route::get('invitation/{id}', ['as' => 'backend.invitation.edit', 'uses' => 'InvitationController@edit']);
+    Route::post('invitation/{id}', ['as' => 'backend.invitation.update', 'uses' => 'InvitationController@update']);
+    Route::post('invitation/delete/{id}', ['as' => 'backend.invitation.delete', 'uses' => 'InvitationController@destroy']);
+
     Route::get('post/category/list', ['as' => 'backend.post.category.list', 'uses' => 'PostCategoryController@index']);
     Route::get('post/category/create', ['as' => 'backend.post.category.create', 'uses' => 'PostCategoryController@create']);
     Route::post('post/category/create', ['as' => 'backend.post.category.store', 'uses' => 'PostCategoryController@store']);

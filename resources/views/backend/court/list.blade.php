@@ -42,7 +42,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {!! $events->render() !!}
+                        {!! $courts->render() !!}
                     </div>
                 </div>
             </div>
