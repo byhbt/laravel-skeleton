@@ -14,7 +14,7 @@ class PostTableSeeder extends DatabaseSeeder
         DB::table('posts')->truncate();
         $faker = Faker\Factory::create();
 
-        for($i = 0; $i < 100; $i++) {
+        for($i = 0; $i < 50; $i++) {
             Post::create([
                 'title'        => $faker->sentence(6),
                 'slug' => $faker->slug(),

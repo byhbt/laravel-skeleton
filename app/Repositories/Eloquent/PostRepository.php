@@ -53,6 +53,8 @@ class PostRepository implements PostInterface
 
     public function update(array $data, $id, $attribute = 'id')
     {
+        $this->model->findOrFail($id);
+
         if(isset($data['featured_img'])) {
             // Save Physical file
             $imageName = Helpers::generatePostImage($data['featured_img']);
@@ -66,6 +68,7 @@ class PostRepository implements PostInterface
 
     public function delete($id)
     {
+        $this->model->findOrFail($id);
         return $this->model->destroy($id);
     }
 

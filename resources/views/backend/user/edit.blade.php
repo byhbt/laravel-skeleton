@@ -10,7 +10,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         @include('backend.partials.message')
-                        <form role="form" action="{{ route('backend.user.create') }}" method="post" class="form-horizontal">
+                        <form role="form" action="{{ route('backend.user.update', $user->id) }}" method="post" class="form-horizontal">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="form-group">
                                 <label for="email" class="col-sm-2 control-label">Email</label>

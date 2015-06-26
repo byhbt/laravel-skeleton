@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\StoreVideoCategoryRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserInterface;
 use App\Repositories\VideoCategoryInterface;
 use App\Http\Requests;
@@ -68,19 +69,13 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param StoreUserRequest $request
+     * @param UpdateUserRequest $request
      * @param  int $id
      * @return Response
      */
-    public function update(StoreUserRequest $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        $user = $this->user->find($id);
-
-        if(!$user) {
-            return Redirect::back()->with('error', trans('user.not_found'));
-        }
-
-        $this->user->update($request->except('_token'), $id);
+        $this->user->update($request->except('_token', 'password_confirmation'), $id);
 
         return Redirect::route('backend.user.list')->with('success', trans('user.update.success'));
     }
@@ -93,14 +88,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $category = $this->user->find($id);
-
-        if(!$category) {
-            return Redirect::back()->with('error', trans('user.not_found'));
-        }
-
         $this->user->delete($id);
-
         return Redirect::route('backend.user.list')->with('success', trans('user.delete.success'));
     }
 }

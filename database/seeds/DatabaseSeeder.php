@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
         $this->call('PostTagTableSeeder');
         $this->call('VideoTagTableSeeder');
         $this->call('FavoriteTableSeeder');
+        $this->call('CourtTableSeeder');
+        $this->call('EventTableSeeder');
+        $this->call('InvitationTableSeeder');
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }

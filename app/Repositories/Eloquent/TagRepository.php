@@ -43,11 +43,13 @@ class TagRepository implements TagInterface
 
     public function update(array $data, $id, $attribute = 'id')
     {
+        $this->model->findOrFail($id);
         return $this->model->where($attribute, '=', $id)->update($data);
     }
 
     public function delete($id)
     {
+        $this->model->findOrFail($id);
         return $this->model->destroy($id);
     }
 

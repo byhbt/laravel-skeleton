@@ -1,9 +1,8 @@
 <?php
 namespace App\Repositories\Eloquent;
 
-use App\Models\VideoCategory;
-use App\Repositories\VideoCategoryInterface;
-use App\Models\Video;
+use App\Models\Invitation;
+use App\Repositories\InvitationInterface;
 
 /**
  * User Spoken Languages database migration
@@ -18,13 +17,13 @@ use App\Models\Video;
  * @since      Class available since Release 4.0
  */
 
-class VideoCategoryRepository implements VideoCategoryInterface
+class InvitationRepository implements InvitationInterface
 {
     protected $model;
 
-    public function __construct(VideoCategory $videoCategory)
+    public function __construct(Invitation $invitation)
     {
-        $this->model = $videoCategory;
+        $this->model = $invitation;
     }
 
     public function all($columns = ['*'])

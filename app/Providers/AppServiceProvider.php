@@ -55,6 +55,18 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Repositories\UserInterface', 'App\Repositories\Eloquent\UserRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\CourtInterface', 'App\Repositories\Eloquent\CourtRepository'
+        );
+
+        $this->app->bind(
+            'App\Repositories\EventInterface', 'App\Repositories\Eloquent\EventRepository'
+        );
+
+        $this->app->bind(
+            'App\Repositories\InvitationInterface', 'App\Repositories\Eloquent\InvitationRepository'
+        );
     }
 
 }

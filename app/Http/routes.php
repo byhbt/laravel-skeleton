@@ -36,6 +36,20 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'Backend'), function () {
     Route::post('post/{id}', ['as' => 'backend.post.update', 'uses' => 'PostController@update']);
     Route::post('post/delete/{id}', ['as' => 'backend.post.delete', 'uses' => 'PostController@destroy']);
 
+    Route::get('court/list', ['as' => 'backend.court.list', 'uses' => 'CourtController@index']);
+    Route::get('court', ['as' => 'backend.court.create', 'uses' => 'CourtController@create']);
+    Route::post('court', ['as' => 'backend.court.store', 'uses' => 'CourtController@store']);
+    Route::get('court/{id}', ['as' => 'backend.court.edit', 'uses' => 'CourtController@edit']);
+    Route::post('court/{id}', ['as' => 'backend.court.update', 'uses' => 'CourtController@update']);
+    Route::post('court/delete/{id}', ['as' => 'backend.court.delete', 'uses' => 'CourtController@destroy']);
+
+    Route::get('event/list', ['as' => 'backend.event.list', 'uses' => 'EventController@index']);
+    Route::get('event', ['as' => 'backend.event.create', 'uses' => 'EventController@create']);
+    Route::post('event', ['as' => 'backend.event.store', 'uses' => 'EventController@store']);
+    Route::get('event/{id}', ['as' => 'backend.event.edit', 'uses' => 'EventController@edit']);
+    Route::post('event/{id}', ['as' => 'backend.event.update', 'uses' => 'EventController@update']);
+    Route::post('event/delete/{id}', ['as' => 'backend.event.delete', 'uses' => 'EventController@destroy']);
+
     Route::get('post/category/list', ['as' => 'backend.post.category.list', 'uses' => 'PostCategoryController@index']);
     Route::get('post/category/create', ['as' => 'backend.post.category.create', 'uses' => 'PostCategoryController@create']);
     Route::post('post/category/create', ['as' => 'backend.post.category.store', 'uses' => 'PostCategoryController@store']);

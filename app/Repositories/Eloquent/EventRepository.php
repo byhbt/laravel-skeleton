@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\Eloquent;
 
+use App\Models\Event;
 use App\Models\VideoCategory;
 use App\Repositories\VideoCategoryInterface;
 use App\Models\Video;
@@ -18,13 +19,13 @@ use App\Models\Video;
  * @since      Class available since Release 4.0
  */
 
-class VideoCategoryRepository implements VideoCategoryInterface
+class EventRepository implements EventInterface
 {
     protected $model;
 
-    public function __construct(VideoCategory $videoCategory)
+    public function __construct(Event $event)
     {
-        $this->model = $videoCategory;
+        $this->model = $event;
     }
 
     public function all($columns = ['*'])
