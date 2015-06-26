@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-
+use App\Http\Requests\StoreInvitationRequest;
+use App\Repositories\InvitationInterface;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 class InvitationController extends Controller
 {
+    protected $invitation;
+
+    public function __construct(InvitationInterface $invitation)
+    {
+        $this->invitation = $invitation;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +24,8 @@ class InvitationController extends Controller
      */
     public function index()
     {
-        //
+        $invitations = $this->invitation->paginate();
+        return view('backend.invitation.list', compact('invitations'));
     }
 
     /**
@@ -26,28 +35,19 @@ class InvitationController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.invitation.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
+     * @param StoreInvitationRequest $request
      * @return Response
      */
-    public function store()
+    public function store(StoreInvitationRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
+        $this->invitation->create($request->except('_token', '_wysihtml5_mode'));
+        return Redirect::route('backend.invitation.list');
     }
 
     /**
@@ -58,18 +58,21 @@ class InvitationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $invitation = $this->invitation->find($id);
+        return view('backend.invitation.edit', compact('invitation'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param StoreInvitationRequest $request
+     * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function update(StoreInvitationRequest $request, $id)
     {
-        //
+        $this->invitation->update($request->except('_token', '_wysihtml5_mode'), $id);
+        return Redirect::route('backend.invitation.list')->with('success', trans('invitation.update.success'));
     }
 
     /**
@@ -80,6 +83,7 @@ class InvitationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->invitation->delete($id);
+        return Redirect::route('backend.invitation.list')->with('success', trans('invitation.delete.success'));
     }
 }

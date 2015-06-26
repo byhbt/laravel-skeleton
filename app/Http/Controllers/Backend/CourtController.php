@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-
+use App\Http\Requests\StoreCourtRequest;
+use App\Http\Requests\StorePostCategoryRequest;
+use App\Repositories\CourtInterface;
+use App\Repositories\PostCategoryInterface;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 class CourtController extends Controller
 {
+    protected $court;
+
+    public function __construct(CourtInterface $court)
+    {
+        $this->court = $court;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +26,9 @@ class CourtController extends Controller
      */
     public function index()
     {
-        //
+        $courts = $this->court->paginate();
+
+        return view('backend.court.list', compact('courts'));
     }
 
     /**
@@ -26,28 +38,19 @@ class CourtController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.court.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
+     * @param StoreCourtRequest $request
      * @return Response
      */
-    public function store()
+    public function store(StoreCourtRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
+        $this->court->create($request->except('_token', '_wysihtml5_mode'));
+        return Redirect::route('backend.court.list');
     }
 
     /**
@@ -58,18 +61,21 @@ class CourtController extends Controller
      */
     public function edit($id)
     {
-        //
+        $court = $this->court->find($id);
+        return view('backend.court.edit', compact('court'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param StoreCourtRequest $request
+     * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function update(StoreCourtRequest $request, $id)
     {
-        //
+        $this->court->update($request->except('_token', '_wysihtml5_mode'), $id);
+        return Redirect::route('backend.court.list')->with('success', trans('court.update.success'));
     }
 
     /**
@@ -80,6 +86,7 @@ class CourtController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->court->delete($id);
+        return Redirect::route('backend.court.list')->with('success', trans('court.delete.success'));
     }
 }
