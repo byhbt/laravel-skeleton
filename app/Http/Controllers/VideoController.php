@@ -66,7 +66,16 @@ class VideoController extends Controller
      */
     public function detail()
     {
+        return true;
         return view('video.detail');
+    }
+
+    /**
+     * @return
+     */
+    public function get()
+    {
+
     }
 
 }
