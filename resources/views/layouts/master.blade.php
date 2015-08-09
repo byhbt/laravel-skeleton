@@ -11,7 +11,7 @@
 <!--// Stylesheets //-->
 <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen" />
 <link href="{{ asset('css/style.css') }}" rel="stylesheet" media="screen" />
-<link href="{{ asset('img/favicon.ico') }}" rel="icon" type="image/x-icon" />
+@include('partial.meta')
 <!--[if lt IE 9]>
     <script src="{{ asset('js/html5shiv.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/respond.min.js') }}"></script>
@@ -70,7 +70,7 @@
                     <!-- Logo Start -->
                     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('img/logo.png') }}" alt="Video Magazine" /></a>
+                            <a href="{{ route('home') }}"><img src="{{ asset('img/logo.png') }}" alt="" /></a>
                         </div>
                     </div>
                     <!-- Logo End -->
@@ -115,7 +115,7 @@
                 <!-- Bread Crumb Start -->
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li class="active">Videos - Single Sidebar</li>
                     </ol>
                 </div>
