@@ -132,6 +132,7 @@ return [
         'Illuminate\Html\HtmlServiceProvider',
         'Intervention\Image\ImageServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
+        'McCool\LaravelAutoPresenter\AutoPresenterServiceProvider',
     ],
     /*
     |--------------------------------------------------------------------------

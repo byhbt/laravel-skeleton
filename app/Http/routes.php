@@ -1,10 +1,14 @@
 <?php
 
+/**
+ * Frontend route
+ */
 Route::get('/', 'HomeController@index');
 
-Route::get('video', 'VideoController@show');
-
-Route::get('video/:id', ['as' => 'video.detail', 'uses' => 'VideoController@detail']);
+Route::get('video', ['as' => 'video.list', 'uses' => 'VideoController@show']);
+Route::get('video/{slug}', ['as' => 'video.detail', 'uses' => 'VideoController@detail']);
+Route::get('tin-tuc', ['as' => 'news.list', 'uses' => 'NewsController@show']);
+Route::get('tin-tuc/{slug}', ['as' => 'news.detail', 'uses' => 'NewsController@detail']);
 
 Route::get('import', ['as' => 'video.list', 'uses' => 'VideoController@show']);
 Route::post('import', ['as' => 'video.submit', 'uses' => 'VideoController@store']);
@@ -17,7 +21,9 @@ Route::controllers([
 Route::get('facebook', 'Auth\AuthController@facebookRedirect');
 Route::get('account/facebook', 'Auth\AuthController@facebook');
 
-//Route::group(array('prefix' => 'admin', 'before' => 'auth', 'namespace' => 'Backend'), function()
+/**
+ * Backend route
+ */
 Route::group(array('prefix' => 'admin', 'namespace' => 'Backend'), function () {
     Route::get('/', ['as' => 'dashboard.home', 'uses' => 'DashboardController@show']);
 

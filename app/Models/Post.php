@@ -1,9 +1,11 @@
 <?php
 namespace App\Models;
 
-use \Illuminate\Database\Eloquent\Model;
+use App\Presenters\PostPresenter;
+use McCool\LaravelAutoPresenter\HasPresenter;
+use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Post extends Model implements HasPresenter
 {
     protected $fillable = ['title', 'featured_img', 'slug', 'content', 'status', 'user_id', 'category_id', 'published_at'];
 
@@ -24,5 +26,10 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany('App\Models\Tag');
+    }
+    
+    public function getPresenterClass()
+    {
+        return PostPresenter::class;
     }
 }

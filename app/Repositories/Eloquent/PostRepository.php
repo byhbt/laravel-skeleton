@@ -3,8 +3,6 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Post;
 use App\Repositories\PostInterface;
-use App\Models\Video;
-use Intervention\Image\Facades\Image;
 use Helpers;
 
 /**
@@ -29,18 +27,25 @@ class PostRepository implements PostInterface
         $this->model = $post;
     }
 
+    /**
+     * Get all post
+     *
+     * @param  array  $columns [description]
+     * @return [type]          [description]
+     */
     public function all($columns = ['*'])
     {
-        return $this->model->all($columns);
+        return $this->model->with('category')->get($columns);
     }
 
-    public function paginate($perPage = 10, $orderBy = 'created_at') {
+    public function paginate($perPage = 10, $orderBy = 'created_at')
+    {
         return $this->model->orderBy($orderBy, 'desc')->paginate($perPage);
     }
 
     public function create(array $data)
     {
-        if(isset($data['featured_img'])) {
+        if (isset($data['featured_img'])) {
             // Save Physical file
             $imageName = Helpers::generatePostImage($data['featured_img']);
 
@@ -55,7 +60,7 @@ class PostRepository implements PostInterface
     {
         $this->model->findOrFail($id);
 
-        if(isset($data['featured_img'])) {
+        if (isset($data['featured_img'])) {
             // Save Physical file
             $imageName = Helpers::generatePostImage($data['featured_img']);
 
@@ -66,6 +71,12 @@ class PostRepository implements PostInterface
         return $this->model->where($attribute, '=', $id)->update($data);
     }
 
+    /**
+     * Delete post
+     *
+     * @param  int $id
+     * @return [type]     [description]
+     */
     public function delete($id)
     {
         $this->model->findOrFail($id);

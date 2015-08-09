@@ -1,11 +1,11 @@
-@forelse(range(1, 6) as $item)
+@forelse($videos as $item)
     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
         <!-- Video Box Start -->
         <div class="videobox2">
             <figure>
                 <!-- Video Thumbnail Start -->
                 <a href="video-detail-double-sidebar.html">
-                    <img src="img/img1.jpg" class="img-responsive hovereffect" alt="" />
+                    <img src="{{ $item->getFeaturedImage() }}" class="img-responsive hovereffect" alt="" />
                 </a>
                 <!-- Video Thumbnail End -->
                 <!-- Video Info Start -->
@@ -19,7 +19,7 @@
                 <!-- Video Info End -->
             </figure>
             <!-- Video Title Start -->
-            <h4><a href="video-detail-double-sidebar.html">Darkness bearings</a></h4>
+            <h4><a href="{{ url($item->slug)}}">{{ $item->title }}</a></h4>
             <!-- Video Title End -->
         </div>
         <!-- Video Box End -->
