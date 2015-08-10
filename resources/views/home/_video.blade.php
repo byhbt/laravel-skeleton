@@ -4,7 +4,7 @@
         <div class="videobox2">
             <figure>
                 <!-- Video Thumbnail Start -->
-                <a href="video-detail-double-sidebar.html">
+                <a href="{{ $item->getPermanentLink()}}">
                     <img src="{{ $item->getFeaturedImage() }}" class="img-responsive hovereffect" alt="" />
                 </a>
                 <!-- Video Thumbnail End -->
@@ -19,7 +19,7 @@
                 <!-- Video Info End -->
             </figure>
             <!-- Video Title Start -->
-            <h4><a href="{{ url($item->slug)}}">{{ $item->title }}</a></h4>
+            <h4><a href="{{ $item->getPermanentLink()}}">{{ $item->title }}</a></h4>
             <!-- Video Title End -->
         </div>
         <!-- Video Box End -->

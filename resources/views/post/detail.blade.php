@@ -66,7 +66,7 @@
             <h2 class="heading">Related Posts</h2>
             <div class="clearfix"></div>
             <div class="row">
-                @include('post._related_post')
+                @include('post._related-post')
             </div>
         </div>
         <!-- Contents Section End -->

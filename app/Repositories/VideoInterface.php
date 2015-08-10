@@ -29,4 +29,6 @@ interface VideoInterface
     public function find($id, $columns = ['*']);
 
     public function findBy($field, $value, $column = array('*'));
+    
+    public function getRelatedVideo($categoryId, $limit = 6);
 }

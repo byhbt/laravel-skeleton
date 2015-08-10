@@ -34,11 +34,11 @@ class VideoController extends Controller
     public function viewDetail($slug, VideoInterface $videoRepository)
     {
         $video = $videoRepository->findBy('slug', $slug)->first();
-//        $relatedVideos = $videoRepository->getRelatedPost($video->category_id);
+        $relatedVideos = $videoRepository->getRelatedVideo($video->category_id);
         
         $data = [
             'video' => AutoPresenter::decorate($video),
-//            'relatedVideos' => AutoPresenter::decorate($relatedVideos)
+            'relatedVideos' => AutoPresenter::decorate($relatedVideos)
         ];
         
         return view('video.detail', $data);

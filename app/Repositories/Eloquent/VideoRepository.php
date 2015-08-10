@@ -61,4 +61,12 @@ class VideoRepository implements VideoInterface
     {
         return $this->model->where($field, '=', $value)->get($columns);
     }
+    
+    public function getRelatedVideo($categoryId, $limit = 6)
+    {
+        return $this->model->where('category_id', '=', $categoryId)
+                    ->limit($limit)
+                    ->get();
+    }
+
 }

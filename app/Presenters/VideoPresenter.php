@@ -35,5 +35,13 @@ class VideoPresenter extends BasePresenter
     {
         return route('video.detail', ['slug' => $this->wrappedObject->slug]);
     }
+    
+    public function getYoutubeEmbedLink()
+    {
+        $linkPattern = "http://www.youtube.com/embed/%s";
+        $youtubeId = $this->wrappedObject->youtube_id;
+        $fullLink = sprintf($linkPattern, $youtubeId);
+        return $fullLink;
+    }
    
 }
