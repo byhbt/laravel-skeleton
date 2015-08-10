@@ -23,7 +23,7 @@
                                             <!-- Video Pages End -->
                                             <!-- Blog Pages Start -->
                                             <li class="">
-                                                <a href="blog-double-sidebar.html">Sân cầu lông</a>
+                                                <a href="{{ route('court.list') }}">Sân cầu lông</a>
                                             </li>
                                             <!-- Blog Pages End -->
                                         </ul>

@@ -9,9 +9,7 @@ Route::get('video', ['as' => 'video.list', 'uses' => 'VideoController@index']);
 Route::get('video/{slug}', ['as' => 'video.detail', 'uses' => 'VideoController@viewDetail']);
 Route::get('tin-tuc', ['as' => 'post.list', 'uses' => 'PostController@index']);
 Route::get('tin-tuc/{slug}', ['as' => 'post.detail', 'uses' => 'PostController@viewDetail']);
-
-//Route::get('import', ['as' => 'video.list', 'uses' => 'VideoController@show']);
-//Route::post('import', ['as' => 'video.submit', 'uses' => 'VideoController@store']);
+Route::get('dia-diem', ['as' => 'court.list', 'uses' => 'CourtController@index']);
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
