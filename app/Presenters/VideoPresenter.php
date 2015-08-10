@@ -30,4 +30,10 @@ class VideoPresenter extends BasePresenter
     {
         return $this->wrappedObject->category->name;
     }
+    
+    public function getPermanentLink()
+    {
+        return route('video.detail', ['slug' => $this->wrappedObject->slug]);
+    }
+   
 }

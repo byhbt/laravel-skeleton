@@ -59,6 +59,6 @@ class VideoRepository implements VideoInterface
 
     public function findBy($field, $value, $columns = array('*'))
     {
-        return $this->model->where($field, '=', $value, $columns);
+        return $this->model->where($field, '=', $value)->get($columns);
     }
 }

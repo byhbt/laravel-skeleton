@@ -7,20 +7,43 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Madcoda\Youtube;
+use McCool\LaravelAutoPresenter\Facades\AutoPresenter;
+use App\Repositories\VideoInterface;
 
 class VideoController extends Controller
 {
-
     /**
-     * Show the application dashboard to the user.
+     * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index()
+    public function index(VideoInterface $videoRepository)
     {
-        return view('home');
+        // Get videos
+        $videos = $videoRepository->paginate();
+        return view('video.index', ['videos' => $videos]);
     }
-
+    
+    /**
+     * View detail of video
+     * 
+     * @param type $slug
+     * @param \App\Repositories\PostInterface $videoRepository
+     * @return \Illuminate\View\View
+     */
+    public function viewDetail($slug, VideoInterface $videoRepository)
+    {
+        $video = $videoRepository->findBy('slug', $slug)->first();
+//        $relatedVideos = $videoRepository->getRelatedPost($video->category_id);
+        
+        $data = [
+            'video' => AutoPresenter::decorate($video),
+//            'relatedVideos' => AutoPresenter::decorate($relatedVideos)
+        ];
+        
+        return view('video.detail', $data);
+    }
+    
     public function show()
     {
         $videos = Video::all();

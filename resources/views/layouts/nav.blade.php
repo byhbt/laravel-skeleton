@@ -18,7 +18,7 @@
                                             <!-- Home Page Styles End -->
                                             <!-- Video Pages Start -->
                                             <li class="">
-                                                <a href="videos-double-sidebar.html">Videos</a>
+                                                <a href="{{ route('video.list') }}">Videos</a>
                                             </li>
                                             <!-- Video Pages End -->
                                             <!-- Blog Pages Start -->
