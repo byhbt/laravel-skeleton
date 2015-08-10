@@ -28,4 +28,24 @@ class PostPresenter extends BasePresenter
     {
         return $this->wrappedObject->category->name;
     }
+    
+    public function getAuthor()
+    {
+        return $this->wrappedObject->user->name;
+    }
+    
+    public function getPermanentLink()
+    {
+        return route('post.detail', ['slug' => $this->wrappedObject->slug]);
+    }
+    
+    public function getShortContent($limit = 100)
+    {
+        return str_limit($this->wrappedObject->description, $limit);
+    }
+    
+    public function getFullContent()
+    {
+        return $this->wrappedObject->content;
+    }
 }

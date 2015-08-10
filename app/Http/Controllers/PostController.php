@@ -13,24 +13,32 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(PostInterface $postRepository)
     {
-        //
+        // Get posts
+        $posts = $postRepository->paginate();
+        
+        return view('post.index', ['posts' => $posts]);
     }
     
     /**
-     * View detail
+     * View detail of post
      * 
      * @param type $slug
-     * @param \App\Repositories\PostInterface $posts
-     * @return type
+     * @param \App\Repositories\PostInterface $postRepository
+     * @return \Illuminate\View\View
      */
-    public function viewDetail($slug, PostInterface $posts)
+    public function viewDetail($slug, PostInterface $postRepository)
     {
-        $post = $posts->findBy('slug', $slug)->first();
+        $post = $postRepository->findBy('slug', $slug)->first();
         
-        $data = AutoPresenter::decorate($post);
+        $relatedPosts = $postRepository->getRelatedPost($post->category_id);
         
-        return view('post.detail', ['post' => $data]);
+        $data = [
+            'post' => AutoPresenter::decorate($post),
+            'relatedPosts' => AutoPresenter::decorate($relatedPosts)
+        ];
+        
+        return view('post.detail', $data);
     }
 }

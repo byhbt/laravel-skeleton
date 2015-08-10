@@ -12,75 +12,18 @@
                                     <div id="navbar-collapse-1" class="navbar-collapse collapse">
                                         <ul class="nav navbar-nav">
                                             <!-- Home Page Styles Start -->
-                                            <li class="dropdown">
-                                                <a href="index.html" data-toggle="dropdown" class="dropdown-toggle">Tin tức</a>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <!-- Content container to add padding -->
-                                                        <div class="yamm-content">
-                                                            <div class="row">
-                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                    <h5>Home Page Styles</h5>
-                                                                    <ul class="list-unstyled">
-                                                                        <li><a href="index.html">Home Page 1</a></li>
-                                                                        <li><a href="index2.html">Home Page 2</a></li>
-                                                                        <li><a href="index3.html">Home Page 3</a></li>
-                                                                        <li><a href="index4.html">Home Page 4</a></li>
-                                                                        <li><a href="index5.html">Home Page 5</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                            <li class="">
+                                                <a href="{{ route('post.list') }}">Tin tức</a>
                                             </li>
                                             <!-- Home Page Styles End -->
                                             <!-- Video Pages Start -->
-                                            <li class="dropdown">
-                                                <a href="videos-double-sidebar.html" data-toggle="dropdown" class="dropdown-toggle">Videos</a>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <!-- Content container to add padding -->
-                                                        <div class="yamm-content">
-                                                            <div class="row">
-                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                    <h5>Home Page Styles</h5>
-                                                                    <ul class="list-unstyled">
-                                                                        <li><a href="index.html">Home Page 1</a></li>
-                                                                        <li><a href="index2.html">Home Page 2</a></li>
-                                                                        <li><a href="index3.html">Home Page 3</a></li>
-                                                                        <li><a href="index4.html">Home Page 4</a></li>
-                                                                        <li><a href="index5.html">Home Page 5</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                            <li class="">
+                                                <a href="videos-double-sidebar.html">Videos</a>
                                             </li>
                                             <!-- Video Pages End -->
                                             <!-- Blog Pages Start -->
-                                            <li class="dropdown">
-                                                <a href="blog-double-sidebar.html" data-toggle="dropdown" class="dropdown-toggle">Sân cầu lông</a>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <!-- Content container to add padding -->
-                                                        <div class="yamm-content">
-                                                            <div class="row">
-                                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                    <h5>Home Page Styles</h5>
-                                                                    <ul class="list-unstyled">
-                                                                        <li><a href="index.html">Home Page 1</a></li>
-                                                                        <li><a href="index2.html">Home Page 2</a></li>
-                                                                        <li><a href="index3.html">Home Page 3</a></li>
-                                                                        <li><a href="index4.html">Home Page 4</a></li>
-                                                                        <li><a href="index5.html">Home Page 5</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+                                            <li class="">
+                                                <a href="blog-double-sidebar.html">Sân cầu lông</a>
                                             </li>
                                             <!-- Blog Pages End -->
                                         </ul>

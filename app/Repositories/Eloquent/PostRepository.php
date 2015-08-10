@@ -30,15 +30,17 @@ class PostRepository implements PostInterface
     /**
      * Get all post
      *
-     * @param  array  $columns [description]
-     * @return [type]          [description]
+     * @param  array  $columns
      */
     public function all($columns = ['*'])
     {
         return $this->model->with('category')->get($columns);
     }
 
-    public function paginate($perPage = 10, $orderBy = 'created_at')
+    /**
+     * Get post data with pagination
+     */
+    public function paginate($perPage = 12, $orderBy = 'created_at')
     {
         return $this->model->orderBy($orderBy, 'desc')->paginate($perPage);
     }
@@ -91,5 +93,19 @@ class PostRepository implements PostInterface
     public function findBy($field, $value, $columns = array('*'))
     {
         return $this->model->where($field, '=', $value)->get($columns);
+    }
+    
+    /**
+     * Get related post
+     * 
+     * @param int $categoryId
+     * @param int $limit
+     */
+    public function getRelatedPost($categoryId, $limit = 3)
+    {
+        return $this->model->with('category')
+                           ->where('category_id', '=', $categoryId)
+                           ->limit($limit)
+                           ->get();
     }
 }

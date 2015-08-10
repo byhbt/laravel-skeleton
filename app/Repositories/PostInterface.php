@@ -29,4 +29,6 @@ interface PostInterface
     public function find($id, $columns = ['*']);
 
     public function findBy($field, $value, $column = array('*'));
+    
+    public function getRelatedPost($categoryId, $limit = 6);
 }

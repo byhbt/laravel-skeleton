@@ -19,8 +19,4 @@
 </div>
 <!-- Contents Section End -->
 <div class="clearfix"></div>
-<!-- Pagination Start -->
-@include('partial.pagination')
-<div class="clearfix"></div>
-<!-- Pagination End -->
 @endsection

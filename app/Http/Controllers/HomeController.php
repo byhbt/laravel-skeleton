@@ -23,17 +23,17 @@ class HomeController extends Controller
      * @param VideoInterface $video
      * @return Response
      */
-    public function index(VideoInterface $video, PostInterface $posts)
+    public function index(VideoInterface $videoRepository, PostInterface $postRepository)
     {
         // Get posts
-        $news = $posts->all()->take(6);
+        $posts = $postRepository->all()->take(6);
         
         // Get videos
-        $videos = $video->all()->take(6);
+        $videos = $videoRepository->all()->take(6);
         
         // Bind data to view
         $data = [
-            'posts'  => AutoPresenter::decorate($news),
+            'posts'  => AutoPresenter::decorate($posts),
             'videos' => AutoPresenter::decorate($videos),
         ];
 

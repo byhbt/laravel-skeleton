@@ -1,4 +1,4 @@
-@forelse($posts as $post)
+@forelse($relatedPosts as $post)
     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
         <div class="blogposttwo">
             <figure>
@@ -15,16 +15,11 @@
                         <a href="#">{{ $post->getCategory() }}</a>
                     </li>
                 </ul>
-                <p>{{ $post->getShortContent() }}</p>
                 <a href="{{ $post->getPermanentLink() }}" class="btn btn-primary btn-xs backcolor">Read More</a>
             </div>
         </div>
         <div class="clearfix"></div>
     </div>
 @empty
-    <div class="row">
-        <div class="col-sm-12">
-            Oops, curreny we have no news for this category.
-        </div>
-    </div>
+    <p>No related article.</p>
 @endforelse
