@@ -7,11 +7,11 @@ namespace App\Repositories;
  * @category
  * @package    SIB\Database\Migrations
  * @author     thanhhb
- * @copyright  PhpStorm
+ * @copyright  NetBeans
  * @license    Commercial
  * @version    4.0
  * @link       caulong.me
- * @since      Class available since Release 4.0
+ * @since      Class available since Release 1.0
  */
 
 interface PostInterface
